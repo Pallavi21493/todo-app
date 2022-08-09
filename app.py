@@ -28,6 +28,10 @@ def hello_world():
     return render_template('index.html', allTodo = allTodo)
     # return 'Hello, World!!!'
 
+@app.route('/search/<int:sno>', method=['GET'])
+def search(sno):
+    todo = Todo.query.filter_by(sno=sno).first()
+
 @app.route('/show')
 def product():
     allTodo = Todo.query.all()
